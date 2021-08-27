@@ -1,0 +1,6 @@
+#Files to ignore when adding and pushing to git
+captureenv/
+.DS_Store
+docs/build/
+docs/source/_templates/
+

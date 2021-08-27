@@ -1,0 +1,10 @@
+﻿Samtools Utility,Parameter,Function
+view,-@,Number of threads
+view,-S,ignored (input format is auto-detected)
+view,-h,include header in SAM output
+view,-u,output uncompressed bam file. since this is not a final output but piped to another samtools step ``u`` option will save time 
+view,-F 2048,remove supplementry alignmnets
+sort,-T,Provide a full path to a temp directory. Using a temp directory will help avoid memory issues
+sort,--threads,Number of processes to split the sorting work
+sort,-n,sort by read name
+sort,-o,output file

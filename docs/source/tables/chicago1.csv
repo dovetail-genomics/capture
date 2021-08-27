@@ -1,0 +1,11 @@
+﻿Parameter,Value,Details
+--design-dir,,path to the design directory
+--cutoff,5,Score threshold for calling significant interactions (typically set to  5). Scores are calculated as -log weighted p-value based on the expected true positive rates at different distance ranges (estimated from data)
+--export-format,,Multiple formats are available for exporting the interactions "," you can specifiy multiple formats to be used, we recommend the following:"
+,interBed,"Each interaction detailed as one raw with the following fields: bait_chr"","" bait_start"",""  bait_end"","" bait_name"","" otherEnd_chr"","" otherEnd_start"",""  otherEnd_end"",""  otherEnd_name"",""  N_reads"",""  and score"
+,washU_text,"Can be read by the WashU browser"","" Upload using ""Tracks ""->"" Local Text Tracks ""->"" ""long-range text"""
+,washU_track,"Can be read by the WashU browser"","" Upload using ""Tracks ""->"" Local Tracks ""->"" ""longrange"" (both track file and index file should be uploaded)"
+,seqMonk,"Each interaction is represented by two rows: bait row followed by other end row. Includes the following fields: chromosome, start, end, name, number of reads and interaction score"
+"""--en-feat-list""",,"Path to a tab delmited file specify the name of the genomic (column 1)and path to the associated bed file (column 2)\, multiple features can be specified"","" each one on one row. The script will test the hypothesis that other ends in called interactions are are enriched for genomic features of interest"","" e.g. histone chip-seq results "
+<path_to_chinput>,,"Path to chinput file(S). If you wish to run CHiCAGO on multiple replicas together, you can specify multiple chinput files (comma separated). All the chinput file shoul be made with the same settings and same rmap and baitmap files as in the specified design directory"
+<output_prefix>,,
