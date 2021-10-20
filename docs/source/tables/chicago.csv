@@ -1,10 +1,10 @@
 ﻿Parameter,Value,Details
-\--design-dir,,path to the design directory
-\--cutoff,5,Score threshold for calling significant interactions (typically set to  5). Scores are calculated as -log weighted p-value based on the expected true positive rates at different distance ranges (estimated from data). Increasing the cutoff will increase the stringency and less interactions will be called.
-\--export-format,,"Multiple formats are available for exporting the interactions \, you can specifiy multiple formats to be used, we recommend the following:"
-,interBed,"Each interaction detailed as one raw with the following fields: bait_chr\, bait_start\,  bait_end\, bait_name\, otherEnd_chr\, otherEnd_start\,  otherEnd_end\,  otherEnd_name\,  N_reads\,  and score"
-,washU_text,"Can be read by the WashU browser\, Upload using: **Tracks** → **Local Text Tracks** → **long-range text**"
-,washU_track,"Can be read by the WashU browse, Upload using"" **Tracks** → **Local Tracks** → **longrange** (both track file and index file should be uploaded)"
-,seqMonk,"Each interaction is represented by two rows: bait row followed by other end row. Includes the following fields: chromosome\, start\, end\, name\, number of reads and interaction score"
-<path_to_chinput>,,"Path to chinput file(S). If you wish to run CHiCAGO on multiple replicas together, you can specify multiple chinput files (comma separated). All the chinput file shoul be made with the same settings and same rmap and baitmap files as in the specified design directory"
+\--design-dir,,Path to the design directory
+\--cutoff,5,Score threshold for calling significant interactions (typically set to  5). Scores are calculated as -log weighted p-values based on the expected true positive rates at different distance ranges (estimated from data). Increasing the cutoff will increase the stringency and less interactions will be called.
+\--export-format,,Multiple formats are available for exporting the interactions. You can specify multiple formats to be used. We recommend the following:
+,interBed,"Each interaction detailed as one row with the following fields: bait_chr\, bait_start\,  bait_end\, bait_name\, otherEnd_chr\, otherEnd_start\,  otherEnd_end\,  otherEnd_name\,  N_reads\,  and score"
+,washU_text,Can be read by the WashU browser. Upload to the browser using: **Tracks** → **Local Text Tracks** → **long-range text**
+,washU_track,"Can be read by the WashU browser. Upload to the browser using"" **Tracks** → **Local Tracks** → **longrange** (both track file and index file should be uploaded)"
+,seqMonk,"Each interaction is represented by two rows: bait row followed by other-end row. Includes the following fields: chromosome\, start\, end\, name\, number of reads and interaction score"
+<path_to_chinput>,,"Path to chinput file(s). If you wish to run CHiCAGO on multiple replicas together, you can specify multiple chinput files ( in a comma separated format). All the chinput files should be made using the same settings and with thesame rmap and baitmap files located in the specified design directory"
 <output_prefix>,,

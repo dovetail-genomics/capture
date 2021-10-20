@@ -54,13 +54,13 @@ CHiCAGO supporting files
 +----------------------+-----------------------------------------------------------------------------------------+
 | Library              | Link                                                                                    |
 +======================+=========================================================================================+
-|5kb pooled fragments  |https://s3.amazonaws.com/dovetail.pub/capture/human/CHiCAGO_files/h_5kDesingFiles.tar.gz |
+|5kb pooled fragments  |https://s3.amazonaws.com/dovetail.pub/capture/human/CHiCAGO_files/h_5kDesignFiles.tar.gz |
 |Design files          |                                                                                         |
 +----------------------+-----------------------------------------------------------------------------------------+
-|10kb pooled fragments |https://s3.amazonaws.com/dovetail.pub/capture/human/CHiCAGO_files/h_10kDesingFiles.tar.gz|
+|10kb pooled fragments |https://s3.amazonaws.com/dovetail.pub/capture/human/CHiCAGO_files/h_10kDesignFiles.tar.gz|
 |Design files          |                                                                                         |
 +----------------------+-----------------------------------------------------------------------------------------+
-|20kb pooled fragments |https://s3.amazonaws.com/dovetail.pub/capture/human/CHiCAGO_files/h_20kDesingFiles.tar.gz|
+|20kb pooled fragments |https://s3.amazonaws.com/dovetail.pub/capture/human/CHiCAGO_files/h_20kDesignFiles.tar.gz|
 |Design files          |                                                                                         |
 +----------------------+-----------------------------------------------------------------------------------------+
 
@@ -91,13 +91,13 @@ CHiCAGO supporting files
 +----------------------+-----------------------------------------------------------------------------------------+
 | Library              | Link                                                                                    |
 +======================+=========================================================================================+
-|5kb pooled fragments  |https://s3.amazonaws.com/dovetail.pub/capture/mouse/CHiCAGO_files/m_5kDesingFiles.tar.gz |
+|5kb pooled fragments  |https://s3.amazonaws.com/dovetail.pub/capture/mouse/CHiCAGO_files/m_5kDesignFiles.tar.gz |
 |Design files          |                                                                                         |
 +----------------------+-----------------------------------------------------------------------------------------+
-|10kb pooled fragments |https://s3.amazonaws.com/dovetail.pub/capture/mouse/CHiCAGO_files/m_10kDesingFiles.tar.gz|
+|10kb pooled fragments |https://s3.amazonaws.com/dovetail.pub/capture/mouse/CHiCAGO_files/m_10kDesignFiles.tar.gz|
 |Design files          |                                                                                         |
 +----------------------+-----------------------------------------------------------------------------------------+
-|20kb pooled fragments |https://s3.amazonaws.com/dovetail.pub/capture/mouse/CHiCAGO_files/m_20kDesingFiles.tar.gz|
+|20kb pooled fragments |https://s3.amazonaws.com/dovetail.pub/capture/mouse/CHiCAGO_files/m_20kDesignFiles.tar.gz|
 |Design files          |                                                                                         |
 +----------------------+-----------------------------------------------------------------------------------------+
 

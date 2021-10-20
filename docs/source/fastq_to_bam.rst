@@ -7,8 +7,8 @@ From fastq to bam files
 
 .. admonition:: fastq to final valid pairs bam file - for the impatient!
 
-   If you just want to give it a shot and run all the alignment and filtering steps without going over all the details, we made a shorter version for you, with all the steps piped. Otherwise move to the next section :ref:`fastq to final valid pairs bam file - step by step<step-by-step>`. 
-   The piped commands outputs two different formats of final bam files, bam index file and a dup stats file. The example below is based on human NSC dataset, replica 1, you can find the fastq files and a link to the reference in the  :ref:`capture Data Sets section<DATASETS>`. Otherwise move to the next section :ref:`fastq to final valid pairs bam file - step by step<step-by-step>`
+   If you just want to give it a shot and run all the alignment and filtering steps without going over the details, this is a shorter version for you. Otherwise move to the next section :ref:`fastq to final valid pairs bam file - step by step<step-by-step>`. 
+   The piped commands output two different formats of final bam files - bam index file and a dup stats file. The example below is based on the human NSC dataset, replica 1. You can find the fastq files and a link to the reference in the  :ref:`capture Data Sets section<DATASETS>`. 
 
    **Command:**
 
@@ -29,7 +29,7 @@ From fastq to bam files
       bwa mem -5SP -T0 -t16 hg38.fa NSC_rep1_R1.fastq.gz NSC_rep1_R2.fastq.gz| pairtools parse --min-mapq 40 --walks-policy 5unique --max-inter-align-gap 30 --nproc-in 8 --nproc-out 8 --chroms-path hg38.genome | pairtools sort --tmpdir=/home/ubuntu/ebs/temp/ --nproc 16|pairtools dedup --nproc-in 8 --nproc-out 8 --mark-dups --output-stats stats.txt|pairtools split --nproc-in 8 --nproc-out 8 --output-pairs mapped.pairs --output-sam -|samtools view -bS -@16 | samtools sort -@16 -o NSC_rep1_PT.bam;samtools index NSC_rep1_PT.bam;samtools view -@ 16 -Shu -F 2048 NSC_rep1_PT.bam|samtools sort -n -T /home/ubuntu/ebs/temp/ --threads 16 -o NSC_rep1_chicago.bam -
 
 
-|clock| The full pipeline, with 250M read pairs on an Ubuntu 18.04 machine with 16 CPUs, 1TB storage and 64GiB memory takes about 8 hours to complete.
+|clock| The full pipeline, with 250M read pairs on an Ubuntu 18.04 machine with 16 CPUs, 1 TB storage and 64 GB memory takes about 8 hours to complete.
 
 
 .. |clock| image:: /images/clock.jpg
@@ -45,9 +45,9 @@ fastq to final valid pairs bam file - step by step
 Alignment 
 +++++++++
 
-Now that you have a genome file, index file and a reference fasta file you are all set to align your captured Micro-C\ :sup:`®` \ or Omni-C\ :sup:`®` \ library to the reference. Please note the specific settings that are needed to map mates independently and for optimal results with our proximity library reads.
+Now that you have a genome file, index file and a reference fasta file, you are all set to align your captured Micro-C\ :sup:`®` \ or Omni-C\ :sup:`®` \ library to the reference. Please note the specific settings that are needed to map mates independently and for optimal results with our proximity library reads.
 
-To replicate the output files generated in this workflow, please use the NSC replica 1 fastq files from our :ref:`capture Data Sets section<DATASETS>`, for your convenience reference file is also included. if you're using your own fastq files, the results will be different from the example outputs displayed here. 
+To replicate the output files generated in this workflow, please use the NSC replica 1 fastq files from our :ref:`capture Data Sets section<DATASETS>`. For your convenience, the reference file is also included. If you are using your own fastq files, the results will be different from the example outputs displayed here. 
 
 
 .. csv-table::
@@ -57,7 +57,7 @@ To replicate the output files generated in this workflow, please use the NSC rep
    :class: tight-table
 
 
-Bwa mem will output a sam file that you can either pipe or save to a path using -o option, as in the example below (please note that version 0.7.17 or higher should be used, older versions do not support the `-5` flag)
+bwa mem will output a sam file that you can either pipe or save to a path using -o option, as in the example below (please note that version 0.7.17 or higher should be used, older versions do not support the `-5` flag)
 
 **Command:**
 
@@ -87,7 +87,7 @@ Bwa mem will output a sam file that you can either pipe or save to a path using 
 Recording valid ligation events
 +++++++++++++++++++++++++++++++
 
-We use the ``parse`` module of the ``pairtools`` pipeline to find ligation junctions. When a ligation event is identified in the alignment file the pairtools pipeline will record the outer-most (5’) aligned base pair and the strand of each one of the paired reads into ``.pairsam`` file (pairsam format captures SAM entries together with the Hi-C pair information). In addition, it will also assign a pair type for each event. e.g. if both reads aligned uniquely to only one region in the genome, the type UU (Unique-Unique) will be assigned to the pair. The following steps are necessary to identify the high quality valid pairs over low quality events (e.g. due to low mapping quality):
+We use the ``parse`` module of the ``pairtools`` pipeline to find ligation junctions. When a ligation event is identified in the alignment file, the pairtools pipeline will record the outer-most (5’) aligned base pair and the strand of each one of the paired reads into a ``.pairsam`` file (pairsam format captures SAM entries together with the Hi-C pair information). In addition, it will assign a pair type for each event (e.g. if both reads aligned uniquely to only one region in the genome, the type UU (Unique-Unique) will be assigned to the pair). The following steps are necessary to identify the high-quality valid pairs over low quality events (e.g. due to low mapping quality):
 
 
 ``pairtools parse`` options:
@@ -149,7 +149,7 @@ The parsed pairs are then sorted using `pairtools sort`
 
 .. admonition:: Important!
 
-   Please note that an absolute path for the temp directory is required for ``pairtools sort``, e.g. path of the structure ~/ebs/temp/ or ./temp/ will not work, instead, something of this sort is needed /home/user/ebs/temp/
+   Please note that an absolute path for the temp directory is required for ``pairtools sort`` (e.g. path of the structure ~/ebs/temp/ or ./temp/ will not work, instead, something of this akin /home/user/ebs/temp/ is needed).
 
 .. _DUPs:
 
@@ -185,7 +185,7 @@ Removing PCR duplicates
 Generating .pairs and bam files
 +++++++++++++++++++++++++++++++
 
-The ``pairtools split`` command is used to split the final ``.pairsam`` into two files: ``.sam`` (or ``.bam``) and ``.pairs`` (``.pairsam`` has two extra columns containing the alignments from which the Omni-C or Micro-C pair was extracted, these two columns are not included in ``.pairs`` files)
+The ``pairtools split`` command is used to split the final ``.pairsam`` into two files: ``.sam`` (or ``.bam``) and ``.pairs`` (``.pairsam``). Note that ``.pairsam``  has two extra columns containing the alignments from which the Omni-C or Micro-C pair was extracted (these two columns are not included in ``.pairs`` files)
 
 ``pairtools split`` options:
 
@@ -242,7 +242,7 @@ For downstream steps, the bam file should be sorted, using the command `samtools
    samtools sort -@16 -T /home/ubuntu/ebs/temp/ -o NSC_rep1_PT.bam NSC_rep1_unsorted.bam
 
 
-For future steps an index (.bai) of the bam file is also needed.
+For future steps, an index (.bai) of the bam file is also needed.
 Index the bam file:
 
 **Command:**
@@ -259,7 +259,7 @@ Index the bam file:
    samtools index NSC_rep1_PT.bam
 
 
-The above steps resulted in multiple intermediate files, to simplify the process and avoid intermediate files, you can pipe the steps.
+The above steps result in multiple intermediate files. To simplify the process and avoid intermediate files, you can pipe the steps.
 
 The `*PT.bam` (PT stands for pair tools) is a key bam file that will be used for :ref:`library QC <LQ>`, generating :ref:`contact maps <GCM>` and more. Additional processing of the bam file will be required for :ref:`interaction calling <INT>`.
 
@@ -268,7 +268,7 @@ The `*PT.bam` (PT stands for pair tools) is a key bam file that will be used for
 CHiCAGO compatible bam file
 ---------------------------
 
-As will be discussed in the :ref:`interaction calling <INT>` section, we will use the `CHiCAGO tool <http://functionalgenecontrol.group/chicago>`_ for calling P-E interactions. CHiCAGO is designed to work with bam files produced with `HiCUP <http://www.bioinformatics.babraham.ac.uk/projects/hicup/>`_ pipeline. To match the format of our bam file to the format expected by CHiCAGO, we will clean the bam file from alignments that won't be used by CHiCAGO (e.g. supplementary alignment) and modify the sorting from position based to read name based sorting. 
+As will be discussed in the :ref:`interaction calling <INT>` section, we will use the `CHiCAGO tool <http://functionalgenecontrol.group/chicago>`_ for calling P-E interactions. CHiCAGO is designed to work with bam files produced with `HiCUP <http://www.bioinformatics.babraham.ac.uk/projects/hicup/>`_ pipeline. To match the format of our bam file to that expected by CHiCAGO, we will clean the bam file of alignments not used by CHiCAGO (e.g. supplementary alignment) and modify the sorting from position based to read-name based sorting. 
 
 Samtools parameter for generating a CHiCAGO compatible bam format:
 

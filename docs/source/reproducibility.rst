@@ -4,14 +4,14 @@
 Replica Reproducibility
 =======================
 
-It is highly recommended that 2-4 replicas will be generated for each condition (e.g. cell type, treatment etc') in your experiment. Our experience shows that the pan-genome promoter panel experiments are highly reproducible and that coverage over probes and baits is correlated between replicas.
+It is highly recommended that 2-4 replicas be generated for each condition (e.g. cell type, treatment etc.) in your experiment. Our experience shows that Pan Promoter Enrichment Panel experiments are highly reproducible and that coverage over probes and baits is highly correlated between replicas.
 
-To calculate the :math:`R^2` value of mean coverage between replicas, you can use the the :ref:`output mosdepth bed files <MOS>` (ends with regions.bed.gz) that were generated in the :ref:`QC step <LQ>`. 
+To calculate the :math:`R^2` value of mean coverage between replicas, you can use the the :ref:`output mosdepth bed files <MOS>` (ends with regions.bed.gz) that are generated in the :ref:`QC step <LQ>`. 
 
 
-In the :ref:`QC step <LQ>` we guided you to generate coverage profile of probe regions. When evaluating reproducibility between samples you may be interested in addition to evaluate the coverage reproducibility at the bait regions (in most cases one promoter is represented by one bait, or alternatively, by 4 probes). You can simply repeat the :ref:`mosdepth command <MOS>` with the bait file (e.g. https://s3.amazonaws.com/dovetail.pub/capture/human/h_baits_v1.0.bed) in place of the probe bed file. 
+In the :ref:`QC step <LQ>` we guided you to generate a coverage profile of probe regions. When evaluating reproducibility between samples you may be interested, in addition, to evaluate the coverage reproducibility across the bait regions (in most cases one promoter is represented by one bait, or, alternatively, by 4 probes). You can simply repeat the :ref:`mosdepth command <MOS>` with the bait file (e.g. https://s3.amazonaws.com/dovetail.pub/capture/human/h_baits_v1.0.bed) in place of the probe bed file. 
 
-The last column in the mosdepth output bed file (e.g. NSC_rep1_probes.regions.bed.gz) specifies the mean coverage at each bait or probe location. You can import the last columns from the replicas of interest to excel, R data frame, or your choice of statistical tool to calculate :math:`R^2` values. In the example below you can find guidelines for plotting the coverage information of one replica vs. the other for calculating the :math:`R^2` value.
+The last column in the mosdepth output bed file (e.g. NSC_rep1_probes.regions.bed.gz) specifies the mean coverage at each bait or probe location. You can import the last column for each replica of interest to excel, R data frame, or your choice of statistical tool to calculate :math:`R^2` values. In the example below, you can find guidelines for plotting the coverage information of one replica vs. another for calculating the :math:`R^2` value.
 
 **In your R console:**
 
@@ -50,5 +50,5 @@ The last column in the mosdepth output bed file (e.g. NSC_rep1_probes.regions.be
 .. image:: /images/Rplot_NSC_probe.png
    :scale: 80%
 
-Typically :math:`R^2` values for mean probe coverage are around 0.9 (ranging from 0.85 - 0.95 ) and :math:`R^2` values for mean bait coverage are around 0.95 (ranging from 0.95 - 0.99).
+Typically :math:`R^2` values for mean probe coverage are around 0.9 (ranging from 0.85 - 0.95) and :math:`R^2` values for mean bait coverage are around 0.95 (ranging from 0.95 - 0.99).
 

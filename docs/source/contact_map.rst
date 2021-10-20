@@ -5,9 +5,9 @@ Generating Contact Matrix
 =========================
 
 There are two common formats for contact maps, the `Cooler format <https://github.com/mirnylab/cooler>`_ and `Hic <https://github.com/aidenlab/juicer/wiki/Pre>`_ format. 
-Both are compressed sparse formats to avoid large storage volumes; For a given :math:`n` number of bins in the genome, the size of the matrix would be :math:`n^2`, in addition, typically more than one resolution (bin size) is being used. 
+To avoid large storage volumes, both are compressed, sparse formats. For a given :math:`n` number of bins in the genome, the size of the matrix would be :math:`n^2`. In addition, typically more than one resolution (bin size) is used. 
 
-In this section we will guide you on how to generate both matrices types, :ref:`HiC<JHIC>` and :ref:`cool<COOL>` based on the :ref:`.pairs file<GPB>` that you generated in the :ref:`previous section<GPB>` and how to visualize them.
+In this section we will guide you on how to generate both matrix types, :ref:`HiC<JHIC>` and :ref:`cool<COOL>`, based on the :ref:`.pairs file<GPB>` that you generated in the :ref:`previous section<GPB>` and show you how to visualize them.
 
 
 
@@ -38,13 +38,13 @@ From ``.pairs`` to ``.hic`` contact matrix
 ++++++++++++++++++++++++++++++++++++++++++
 
 
-- `Juicer Tools <https://github.com/aidenlab/juicer>`_ is used to convert ``.pairs`` file into a `HiC <https://github.com/aidenlab/juicer/wiki/Pre>`_ contact matrix. 
+- `Juicer Tools <https://github.com/aidenlab/juicer>`_ is used to convert a ``.pairs`` file into a `HiC <https://github.com/aidenlab/juicer/wiki/Pre>`_ contact matrix. . Advantages of the HiC format include: 
 
-- ``HiC`` is highly compressed binary representation of the contact matrix
+- ``HiC`` is a highly compressed binary representation of the contact matrix
 
 - Provides rapid random access to any genomic region matrix
 
-- Stores contact matrix at 9 different resolutions (2.5M, 1M, 500K, 250K, 100K, 50K, 25K, 10K, and 5K)
+- Stores contact matrix at 9 different resolutions (2.5 M, 1 M, 500 K, 250 K, 100 K, 50 K, 25 K, 10 K, and 5 K)
 
 - Can be programmatically manipulated using straw python API
 
@@ -59,7 +59,7 @@ The :ref:`.pairs<GPB>` file that you generated in the :ref:`From fastq to final 
 
 .. admonition:: Tip no.1
    
-   Please note that if you have an older version of ``Juicer tools``, generating contact map directly from ``.pairs`` file may not be supported. We recommend updating to a newer version. As we tested, the ``pre`` utility of the version 1.22.01 support the .pairs to HiC function. 
+   Please note,  that if you have an older version of ``Juicer tools``, generating contact maps directly from ``.pairs`` files may not be supported. We recommend updating to a newer version. As we tested, the ``pre`` utility of the version 1.22.01 support the .pairs to HiC function. 
 
 **Command:**
 
@@ -76,13 +76,13 @@ The :ref:`.pairs<GPB>` file that you generated in the :ref:`From fastq to final 
 
 .. admonition:: Tip no.2
 
-   ``Juicer tools`` offers additional functions that were not discussed here, including matrix normalization and generating matrix for only specified regions in the genome. To learn more about advanced options, please refer to the `Juicer Tools documentation <https://github.com/aidenlab/juicer/wiki/Pre>`_.
+   ``Juicer tools`` offers additional functions that were not discussed here, including matrix normalization and generating a matrix for only specified regions in the genome. To learn more about advanced options, please refer to the `Juicer Tools documentation <https://github.com/aidenlab/juicer/wiki/Pre>`_.
 
 
 Visualizing ``.hic`` contact matrix
 +++++++++++++++++++++++++++++++++++
 
-The visualization tool ``Juicebox`` can be used to visualize the contact matrix. You can either `download <https://github.com/theaidenlab/juicebox/wiki/Download>`_ a local version of the tool to your computer as a Java application or use a `web <https://www.aidenlab.org/juicebox/>`_ version of Juicebox. Load your ``.hic`` file to visualize the contact map and zoom in to areas of interest.
+The visualization tool, ``Juicebox``, can be used to visualize the contact matrix. You can either `download <https://github.com/theaidenlab/juicebox/wiki/Download>`_ a local version of the tool to your computer as a Java application or use a `web <https://www.aidenlab.org/juicebox/>`_ version of Juicebox. Load your ``.hic`` file to visualize the contact map and zoom in to areas of interest.
 
 .. image:: /images/hic.png
    :width: 200pt
@@ -131,20 +131,20 @@ Add the bin path, and utils path to PATH and exit the folder:
 
 .. admonition:: Important!
 
-   make sure to modify the following example with the path to your `pairix` installation folder. If you are not sure what is the path you can check it with the command `pwd` when located in the `pairix` folder.
+   Make sure you modify the following example with the path to your `pairix` installation folder. If you are not sure of your path, you can check it with the command `pwd` when located in the `pairix` folder.
 
 For any issues with ``pairix``, please refer to the `pairix documentation <https://github.com/4dn-dcic/pairix>`_
 
 From ``.pairs`` to ``cooler`` contact matrix
 ++++++++++++++++++++++++++++++++++++++++++++
 
-- `Cooler tools <https://github.com/mirnylab/cooler>`_ is used to convert **indexed** ``.pairs`` file into `cool and mcool <https://cooler.readthedocs.io/en/latest/index.html>`_ contact matrices
+- `Cooler tools <https://github.com/mirnylab/cooler>`_ is used to convert **indexed** ``.pairs`` files into `cool and mcool <https://cooler.readthedocs.io/en/latest/index.html>`_ contact matrices
 
 - ``Cooler`` generates a sparse, compressed, and binary persistent representation of proximity ligation contact matrix
 
-- Store matrix as `HDF5 <https://en.wikipedia.org/wiki/Hierarchical_Data_Format>`_ file object
+- Stores the matrix as `HDF5 <https://en.wikipedia.org/wiki/Hierarchical_Data_Format>`_ file object
 
-- Provides python API to manipulate contact matrix
+- Provides a python API to enable contact matrix data manipulation
 
 - Each cooler matrix is computed at a specific resolution
 
@@ -174,12 +174,12 @@ We will use the ``cload pairix`` utility of ``Cooler`` to generate contact maps.
   bgzip mapped.pairs
 
 
-Following this command ``mapped.pairs`` will be replaced with its compressed form ``mapped.pairs.gz``
+Following this command, ``mapped.pairs`` will be replaced with its compressed form, ``mapped.pairs.gz``.
 
 
 .. admonition:: Note!
 
-   Compressing the ``.pairs`` file with ``gzip`` instead of ``bgzip`` will also result in a compressed file with the ``.gz`` suffix, but due to format differences it will not be accepted as an input for ``pairix``.
+   Compressing the ``.pairs`` file with ``gzip`` instead of ``bgzip`` will result in a compressed file with the ``.gz`` suffix. However due to format differences it will not be accepted as an input for ``pairix``.
 
 
 Next, index the file ``.pairs.gz`` file:
@@ -233,10 +233,10 @@ As mentioned above, we will use the ``cload pairix`` utility of ``Cooler`` to ge
 
 
 
-Generating multi-resolutions files and visualizing the contact matrix
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Generating multi-resolution files and visualizing the contact matrix
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-When you wish to visualize the contact matrix, it is highly recommended to generate a multi-resolution ``.mcool`` file to allow zooming in and out to inspect regions of interest. The cooler ``zoomify`` utility allows you to generate a multi-resolution cooler file by coarsening. The input to ``cooler zoomify`` is a single resolution ``.cool`` file, to allow zooming in into regoins of interest we suggest to generate a ``.cool`` file with a small bin size, e.g. 1kb. Multi-resolution files uses the suffix ``.mcool``.
+When you wish to visualize the contact matrix, it is highly recommended to generate a multi-resolution ``.mcool`` file to enable zooming in and out of interesting regions. The cooler ``zoomify`` utility enables you to generate a multi-resolution cooler file by coarsening. The input to ``cooler zoomify`` is a single resolution ``.cool`` file. To enable zooming in into interesting regions we suggest you generate a ``.cool`` file with a small bin size, e.g. 1 kb. Multi-resolution files uses the suffix ``.mcool``.
 
 ``cooler zoomify`` usage:
 
@@ -265,13 +265,13 @@ When you wish to visualize the contact matrix, it is highly recommended to gener
 
   cooler zoomify --balance -p 16 matrix_1kb.cool
 
-The example above will result in a new file named `matrix_1kb.mcool` (no need to specify output name)
+The example above will result in a new file named `matrix_1kb.mcool` (there is no need to specify the output name).
 
 
-.. admonition:: Tip
+.. Tip::
 
-   ``Cooler`` offers additional functions that were not discussed here, including generating a cooler from a pre-binned matrix, matrix normalization and more. To learn more about advanced options, please refer to the cooler `documentation <https://cooler.readthedocs.io/en/latest/cli.html#quick-reference>`_
+   ``Cooler`` offers additional functions that were not discussed here, including generating a cooler file from a pre-binned matrix, matrix normalization and more. To learn more about these advanced options, refer to the cooler `documentation <https://cooler.readthedocs.io/en/latest/cli.html#quick-reference>`_
 
 
-`HiGlass <http://higlass.io/>`_ is an interactive tool for visualizing ``.mcool`` files. To learn more about how to set up and use HiGlass follow the HiGlass `tutorial <https://docs.higlass.io/tutorial.html>`_
+`HiGlass <http://higlass.io/>`_ is an interactive tool for visualizing ``.mcool`` files. To learn more about how to set up and use HiGlass follow the HiGlass `tutorial <https://docs.higlass.io/tutorial.html>`_.
 
