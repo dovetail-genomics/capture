@@ -24,13 +24,23 @@ Spatial Control of Transcriptional Regulation:
 
 Key benefits of Dovetail\ :sup:`®` \ Pan Promoter Enrichment Panel:
 
-  - The panel was optimized to work using Dovetail's unique restriction enzyme-free  Hi-C, Omni-C and Micro-C technologies. Extemely high promoter coverage was achieved using this approach as no promoters were ommited from the panel due to lack of restriction sites in their vicinity as needed in other Capture Hi-C methods. The Pan Promoter Enrichment Panel offers the highest resolution view of P-E interactions with lowest sequencing burden.
-  - Captured Libraries maintain Hi-C characteristics in terms of valid read-pairs length distribution while achieving uniform coverage over baited regions. 
-  - The reproducibility of the captured libraries is very high, with high correlation of coverage over baits between replicas (typical :math:`R^2` are > 0.97).
-  - The robust coverage of the human and mouse panels enables genome-wide research in the field of gene regulation and epigenetics, developmental biology, complex trait mapping and more.
+  - The panel was optimized to work using Dovetail's unique restriction enzyme-free  Hi-C, Omni-C and Micro-C technologies. Extemely high promoter coverage was achieved using this approach as no promoters were ommited from the panel due to lack of restriction sites in their vicinity as needed in other Capture Hi-C methods. The table below summarizes the genes, promoters and probes that are included in the human and mouse panels:
+  
   .. image:: /images/panel_design.png
-   :width: 500pt
-   :align: center
+     :width: 500pt
+     :align: center
+
+  - The Pan Promoter Enrichment Panel offers the highest resolution view of P-E interactions with lowest sequencing burden.
+  - Captured Libraries maintain Hi-C characteristics in terms of valid read-pairs length distribution while achieving uniform coverage over baited regions. 
+  - The reproducibility of the captured libraries is very high, with high correlation of coverage over baits between replicas, with typical :math:`R^2` > 0.97. Baits are defined as the combined locations of probe targets that belong to same gene promoter, as area #5 in the image below:
+.. _PROBAIT:
+
+    .. image:: /images/QC_enrich.png
+     :width: 300pt
+     :align: center
+
+  - The robust coverage of the human and mouse panels enables genome-wide research in the field of gene regulation and epigenetics, developmental biology, complex trait mapping and more.
+  
 
 
 - This guide will take you step-by-step through the :ref:`QC <LQ>` and interpretation of your captured library and evaluation of  :ref:`reproducibility <RR>` between replicas.  We will show you how to:
@@ -39,18 +49,14 @@ Key benefits of Dovetail\ :sup:`®` \ Pan Promoter Enrichment Panel:
    - :ref:`Find <INT>` and prioritize significant interactions
    - Combine this information with additional data sets that you might have available. 
 
-   Main steps in Pan Promoter captured library preparation and data processing as will be discussed in this document:
+- Main steps in Pan Promoter captured library preparation and data processing:
+
 
    .. figure:: /images/panel_data_viz.png
-      :width: 2600pt
+       :width: 2600pt
 
-  If you have not yet sequenced a Dovetail captured library and simply want to get familiarize yourself with the data, an example dataset from iPSC and NSC captured Micro-C libraries can be downloaded from our publicly-available :ref:`repository<DATASETS>`. In these :ref:`data sets<DATASETS>` you will find bed files with the probes and bait locations.
+- If you have not yet sequenced a Dovetail captured library and simply want to get familiarize yourself with the data, an example dataset from iPSC and NSC captured Micro-C libraries can be downloaded from our publicly-available :ref:`repository<DATASETS>`. In these :ref:`data sets<DATASETS>` you will find bed files with the probes and bait locations.
 
-.. _PROBAIT:
-
-.. image:: /images/QC_enrich.png
-   :width: 300pt
-   :align: center
 
 - If this is your first time following this tutorial, please check the :ref:`Before you begin page <BYB>` first.
 
