@@ -7,7 +7,7 @@ Detection of DNA Looping Interactions
 Introduction
 ------------
 
-`CHiCAGO <http://regulatorygenomicsgroup.org/resources/Chicago_vignette.html>`_ (Capture Hi-C Analysis of Genomic Organisation) is the most common tool for the detection of DNA looping interactions in capture Hi-C data. The underlying assumption of the approach is that background signal is the result of Brownian noise (distance dependent with a negative binomial distribution) and Poisson distributed technical noise. Signal that is higher than the background is considered a result of significant interactions, such as in the case of P-E interactions. 
+`CHiCAGO <https://github.com/dovetail-genomics/chicago>`_ (Capture Hi-C Analysis of Genomic Organisation) is the most common tool for the detection of DNA looping interactions in capture Hi-C data. The underlying assumption of the approach is that background signal is the result of Brownian noise (distance dependent with a negative binomial distribution) and Poisson distributed technical noise. Signal that is higher than the background is considered a result of significant interactions, such as in the case of P-E interactions. 
 
 Please note that the entire analysis approach that we describe here is bait based and not probe based, meaning all probes of the same promoter are pooled together and interactions called at the bait level (see the :ref:`main page<PROBAIT>` to refresh your memory on the difference between probes and baits). If you are interested in analyzing the data in a probe-centric approach you will need to adjust the steps below. This will also require much higher sequencing coverage as CHiCAGO requires, by default, a minimum of 250 reads per captured fragment.
 
